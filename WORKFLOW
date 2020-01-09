@@ -17,5 +17,3 @@ df<-CR %>%
   
 df %>% group_by(AIT, ENQUADRAMENTO, COD.RET) %>% tally()
 
-df %>% group_by(ENQUADRAMENTO, COD.RET) %>% tally()
-
