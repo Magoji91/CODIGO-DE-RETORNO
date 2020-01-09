@@ -15,5 +15,31 @@ library(dplyr)
 df<-CR %>%
   select(AIT, ENQUADRAMENTO, COD.RET)
   
-df %>% group_by(AIT, ENQUADRAMENTO, COD.RET) %>% tally()
+df1<-CR %>%
+     select(ENQUADRAMENTO, COD.RET)
+
+library("Hmisc")
+res2 <- rcorr(as.matrix(df))
+res2
+
+# Extract the correlation coefficients
+res2$r
+# Extract p-values
+res2$P
+
+# flattenCorrMatrix
+# ++++++++++++++++++++++++++++
+# cormat : matrix of the correlation coefficients
+# pmat : matrix of the correlation p-values
+flattenCorrMatrix <- function(cormat, pmat) {
+  ut <- upper.tri(cormat)
+  data.frame(
+    row = rownames(cormat)[row(cormat)[ut]],
+    column = rownames(cormat)[col(cormat)[ut]],
+    cor  =(cormat)[ut],
+    p = pmat[ut]
+    )
+}
+
+flattenCorrMatrix(res2$r, res2$P)
 
