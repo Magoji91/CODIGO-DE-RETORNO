@@ -1,0 +1,21 @@
+View(CR)
+summary(CR)
+str(CR)
+
+options(max.print=999999)
+table(CR$AIT, CR$COD.RET)
+table(CR$AIT, CR$ENQUADRAMENTO)
+
+CR$COD.RET[CR$COD.RET == "318-VEICULO BAIXA PERMANENTE"]<-318
+CR$COD.RET[CR$COD.RET == "330-AIT JA CADASTRADO"]<-330
+
+library(dplyr)
+(options(tibble.print_max = Inf)
+
+df<-CR %>%
+  select(AIT, ENQUADRAMENTO, COD.RET)
+  
+df %>% group_by(AIT, ENQUADRAMENTO, COD.RET) %>% tally()
+
+df %>% group_by(ENQUADRAMENTO, COD.RET) %>% tally()
+
