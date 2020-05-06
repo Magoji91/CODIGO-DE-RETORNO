@@ -23,4 +23,8 @@ count(RENAINF_2020, 'SEDEX')
 y = count(RENAINF_2020, 'SEDEX')
 y
 class(y)  
+
+counts <- ddply(RENAINF_2020, .(RENAINF_2020$DATA, RENAINF_2020$SEDEX), nrow)
+names(counts) <- c("DATA", "SEDEX", "Freq")
+counts
   
