@@ -10,14 +10,17 @@ CR$COD.RET[CR$COD.RET == "318-VEICULO BAIXA PERMANENTE"]<-318
 CR$COD.RET[CR$COD.RET == "330-AIT JA CADASTRADO"]<-330
 
 library(summarytools)
-freq(data18$birthyear, plain.ascii = FALSE, style = "rmarkdown")
+freq(CR$AIT, plain.ascii = FALSE, style = "rmarkdown")
 
-freq(data18$birthyear, order = "freq", rows = 1:5)
+freq(CR$AIT, order = "freq", rows = 1:5)
 
-descr(data18$birthyear)
-descr(data18, stats = c("mean", "sd"), transpose = TRUE, headings = FALSE)
-view(dfSummary(data18))
+descr(CR$AIT)
+descr(CR, stats = c("mean", "sd"), transpose = TRUE, headings = FALSE)
+view(dfSummary(CR))
 
-  
-  
+library(plyr)
+count(RENAINF_2020, 'SEDEX')
+y = count(RENAINF_2020, 'SEDEX')
+y
+class(y)  
   
