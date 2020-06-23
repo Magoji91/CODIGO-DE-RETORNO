@@ -27,4 +27,10 @@ class(y)
 counts <- ddply(RENAINF_2020, .(RENAINF_2020$DATA, RENAINF_2020$SEDEX), nrow)
 names(counts) <- c("DATA", "SEDEX", "Freq")
 counts
+
+library('data.table')
+df1 <- data.table( rf = RENAINF_2020$DESTINO)
+df1[,.(count = .N), by = rf][, percent := prop.table(count)*100][]
+
+
   
