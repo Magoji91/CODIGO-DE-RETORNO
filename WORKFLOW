@@ -1,35 +1,39 @@
-View(CR)
-summary(CR)
-str(CR)
+library(readxl)
+Warning message:
+package ‘readxl’ was built under R version 3.4.4 
+CDR <- read_excel("//10.138.11.82/renainf/RENAINF 2020/CÓDIGO DE RETORNO/CDR.xlsx")
+New names:
+* `` -> ...11
+View(CDR)
+summary(CDR)
+str(CDR)
 
 options(max.print=999999)
-table(CR$AIT, CR$COD.RET)
-table(CR$AIT, CR$ENQUADRAMENTO)
+table(CDR$`COD RETORNO`, CDR$LOCAL)
 
-CR$COD.RET[CR$COD.RET == "318-VEICULO BAIXA PERMANENTE"]<-318
-CR$COD.RET[CR$COD.RET == "330-AIT JA CADASTRADO"]<-330
+CDR$'COD RETORNO'[CDR$'COD RETORNO' == "318-VEICULO BAIXA PERMANENTE"]<-318
+CDR$'COD RETORNO'[CDR$'COD RETORNO' == "330-AIT JA CADASTRADO"]<-330
+CDR$'COD RETORNO'[CDR$'COD RETORNO' == "231-Número de registro do condutor/infrator não existe na BINCO"] <- 231
+
 
 library(summarytools)
-freq(CR$AIT, plain.ascii = FALSE, style = "rmarkdown")
+freq(CDR$AIT, plain.ascii = FALSE, style = "rmarkdown")
+freq(CDR$'COD RETORNO', plain.ascii = FALSE, style = "rmarkdown")
 
-freq(CR$AIT, order = "freq", rows = 1:5)
-
-descr(CR$AIT)
-descr(CR, stats = c("mean", "sd"), transpose = TRUE, headings = FALSE)
-view(dfSummary(CR))
+view(dfSummary(CDR))
 
 library(plyr)
-count(RENAINF_2020, 'SEDEX')
-y = count(RENAINF_2020, 'SEDEX')
+count(CDR, 'LOCAL')
+y = count(CDR, 'LOCAL')
 y
 class(y)  
 
-counts <- ddply(RENAINF_2020, .(RENAINF_2020$DATA, RENAINF_2020$SEDEX), nrow)
-names(counts) <- c("DATA", "SEDEX", "Freq")
+counts <- ddply(CDR, .(CDR$LOCAL, CDR$'COD RETORNO'), nrow)
+names(counts) <- c("LOCAL", "COD RETORNO", "Freq")
 counts
 
 library('data.table')
-df1 <- data.table( rf = RENAINF_2020$DESTINO)
+df1 <- data.table( rf = CDR$LOCAL)
 df1[,.(count = .N), by = rf][, percent := prop.table(count)*100][]
 
 
