@@ -8,8 +8,12 @@ View(CDR)
 summary(CDR)
 str(CDR)
 
+median(CDR$ENQ)
+quantile(CDR$ENQ, probs = 0.5)
+
 options(max.print=999999)
 table(CDR$`COD RETORNO`, CDR$LOCAL)
+table(CDR$LOCAL)/nrow(CDR)
 
 CDR$'COD RETORNO'[CDR$'COD RETORNO' == "318-VEICULO BAIXA PERMANENTE"]<-318
 CDR$'COD RETORNO'[CDR$'COD RETORNO' == "330-AIT JA CADASTRADO"]<-330
@@ -36,5 +40,22 @@ library('data.table')
 df1 <- data.table( rf = CDR$LOCAL)
 df1[,.(count = .N), by = rf][, percent := prop.table(count)*100][]
 
+round(100*prop.table(table(CDR$LOCAL, CDR$ENQ), margin =1), 1)
 
-  
+
+library(ggplot2)
+pie(table(CDR$LOCAL), main = "Local")
+
+ggplot(CDR, aes(x=LOCAL))+
+geom_bar(aes(y=100*(..count..)/sum(..count..)))+
+ggtitle("LOCAL")+ylab("Freq Relativa em %)
+
+boxplot(CDR$ENQ, main = "Enquadramento", ylab = "Tipos")
+
+install.packages("DescTools")
+library(DescTools)
+PercTable(table(CDR$LOCAL, CDR$ENQ), rfrq = "010", pfmt = TRUE, digits = 1)
+Phi(table(CDR$LOCAL, CDR$ENQ))
+var(CDR$ENQ)
+sd(CDR$ENQ)
+
