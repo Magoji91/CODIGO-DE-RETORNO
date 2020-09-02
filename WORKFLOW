@@ -5,6 +5,7 @@ CDR <- read_excel("//10.138.11.82/renainf/RENAINF 2020/CÓDIGO DE RETORNO/CDR.xl
 New names:
 * `` -> ...11
 View(CDR)
+na.omit(CDR)
 summary(CDR)
 str(CDR)
 
@@ -12,6 +13,7 @@ median(CDR$ENQ)
 quantile(CDR$ENQ, probs = 0.5)
 
 options(max.print=999999)
+options(tibble.print_max = 1000, tibble.print_min = 1) # tibble
 table(CDR$`COD RETORNO`, CDR$LOCAL)
 table(CDR$LOCAL)/nrow(CDR)
 
