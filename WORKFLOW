@@ -62,6 +62,8 @@ sd(CDR$ENQ)
 library(tidyverse)
 CDR %>% slice(1:6)
 
-sl <- RENAINF_2020[551:650, 12]
+sl <- CDR[551:650, 12]
 table(sl)
 freq(sl, plain.ascii = FALSE, style = "rmarkdown")
+
+data = CDR %>% select(O, P, PL, AND)
