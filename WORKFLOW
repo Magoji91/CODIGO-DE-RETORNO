@@ -59,3 +59,9 @@ Phi(table(CDR$LOCAL, CDR$ENQ))
 var(CDR$ENQ)
 sd(CDR$ENQ)
 
+library(tidyverse)
+CDR %>% slice(1:6)
+
+sl <- RENAINF_2020[551:650, 12]
+table(sl)
+freq(sl, plain.ascii = FALSE, style = "rmarkdown")
