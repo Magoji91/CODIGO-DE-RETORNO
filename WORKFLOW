@@ -69,3 +69,6 @@ table(sl)
 freq(sl, plain.ascii = FALSE, style = "rmarkdown")
 
 data = CDR %>% select(O, P, PL, AND)
+
+library(xlsx)
+write.xlsx(mydata, "c:/mydata.xlsx")
