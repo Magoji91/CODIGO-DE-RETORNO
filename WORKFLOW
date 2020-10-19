@@ -9,6 +9,13 @@ na.omit(CDR)
 summary(CDR)
 str(CDR)
 
+install.packages("pastecs")
+install.packages("modeest")
+library(pastecs)
+library(modeest)
+mlv(CDR$USUÁRIO,method = "mfv")
+stat.desc(CDR$USUÁRIO)
+
 median(CDR$ENQ)
 quantile(CDR$ENQ, probs = 0.5)
 
