@@ -96,4 +96,66 @@ summary(CPTRAN)
 table(CPTRAN$OPM, CPTRAN$STATUS)
 table(CPTRAN$OPM, CPTRAN$CODIGO)
 
+library(dplyr)
+library(dplyr)
+CPTRAN <- dplyr::filter(CDR, OPM %in% c("CPTRAN", "1º BPTran", "2º BPTran", "CPTran-FT", "CPTran-DET"))
+summary(CPTRAN)
+table(CPTRAN$OPM, CPTRAN$STATUS)
+table(CPTRAN$OPM, CPTRAN$CODIGO)
+
+CPAM1 <- dplyr::filter(CDR, OPM %in% c("7º BPM/M", "11º BPM/M", "13º BPM/M", "7º BAEP", "CPA/M-1"))
+summary(CPAM1)
+table(CPAM1$OPM, CPAM1$STATUS)
+table(CPAM1$OPM, CPAM1$CODIGO)
+
+CPAM2 <- dplyr::filter(CDR, OPM %in% c("3º BPM/M", "12º BPM/M", "46º BPM/M", "CPA/M-2"))
+summary(CPAM2)
+table(CPAM2$OPM, CPAM2$STATUS)
+table(CPAM2$OPM, CPAM2$CODIGO)
+
+CPAM3 <- dplyr::filter(CDR, OPM %in% c("5º BPM/M", "9º BPM/M", "18º BPM/M", "43º BPM/M", "47º BPM/M", "CPA/M-3"))
+summary(CPAM3)
+table(CPAM3$OPM, CPAM3$STATUS)
+table(CPAM3$OPM, CPAM3$CODIGO)
+
+CPAM4 <- dplyr::filter(CDR, OPM %in% c("2º BPM/M", "29º BPM/M", "39º BPM/M", "48º BPM/M", "4º BAEP", "CPA/M-4"))
+summary(CPAM4)
+table(CPAM4$OPM, CPAM4$STATUS)
+table(CPAM4$OPM, CPAM4$CODIGO)
+
+CPAM5 <- dplyr::filter(CDR, OPM %in% c("4º BPM/M", "16º BPM/M", "23º BPM/M", "49º BPM/M", "CPA/M-5"))
+summary(CPAM5)
+table(CPAM5$OPM, CPAM5$STATUS)
+table(CPAM5$OPM, CPAM5$CODIGO)
+
+CPAM9 <- dplyr::filter(CDR, OPM %in% c("19º BPM/M", "38º BPM/M", "28º BPM/M", "CPA/M-9"))
+summary(CPAM9)
+table(CPAM9$OPM, CPAM9$STATUS)
+table(CPAM9$OPM, CPAM9$CODIGO)
+
+CPAM10 <- dplyr::filter(CDR, OPM %in% c("1º BPM/M", "22º BPM/M", "27º BPM/M", "37º BPM/M", "50º BPM/M", "CPA/M-10"))
+summary(CPAM10)
+table(CPAM10$OPM, CPAM10$STATUS)
+table(CPAM10$OPM, CPAM10$CODIGO)
+
+CPAM11 <- dplyr::filter(CDR, OPM %in% c("8º BPM/M", "21º BPM/M", "51º BPM/M", "CPA/M-11"))
+summary(CPAM11)
+table(CPAM11$OPM, CPAM11$STATUS)
+table(CPAM11$OPM, CPAM11$CODIGO)
+
+DEC <- dplyr::filter(CDR, OPM %in% c("APMBB", "ESSD", "ESSGT"))
+summary(DEC)
+table(DEC$OPM, DEC$STATUS)
+table(DEC$OPM, DEC$CODIGO)
+
+CPCHQ <- dplyr::filter(CDR, OPM %in% c("1º BPChq", "2º BPChq", "3º BPChq", "4º BPChq", "5º BPChq"))
+summary(CPCHQ)
+table(CPCHQ$OPM, CPCHQ$STATUS)
+table(CPCHQ$OPM, CPCHQ$CODIGO)
+
+CORREGEDORIA <- dplyr::filter(CDR, OPM %in% c("CORREGEDORIA"))
+summary(CORREGEDORIA)
+table(CORREGEDORIA$OPM, CORREGEDORIA$STATUS)
+table(CORREGEDORIA$OPM, CORREGEDORIA$CODIGO)
+
 
