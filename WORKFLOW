@@ -90,4 +90,10 @@ library(tidyverse)
 table(CDR$OPM, CDR$STATUS)
 table(CDR$OPM, CDR$CODIGO)
 
+library(dplyr)
+CPTRAN <- dplyr::filter(CDR, OPM %in% c("CPTRAN", "1º BPTran", "2º BPTran"))
+summary(CPTRAN)
+table(CPTRAN$OPM, CPTRAN$STATUS)
+table(CPTRAN$OPM, CPTRAN$CODIGO)
+
 
